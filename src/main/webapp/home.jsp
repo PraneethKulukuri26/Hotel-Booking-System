@@ -114,64 +114,64 @@
 		background-color:#EEEEEF30;
 	}
 
-/* Search Section Styles */
-#search-section {
-    background-color: #f4f4f4;
-    padding: 80px 0;
-    text-align: center;
-}
-
-#search-section h1 {
-    margin-bottom: 30px;
-    font-size: 2.5em;
-    color: #003580;
-    font-weight: bold;
-}
-
-#search-form input, #search-form button {
-    padding: 15px;
-    margin: 10px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1em;
-}
-
-#search-form input {
-    width: 20%;
-    max-width: 300px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-#search-form button {
-    background-color: #f57c00;
-    color: #fff;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease-in-out, box-shadow 0.3s;
-}
-
-#search-form button:hover {
-    background-color: #e65100;
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-}
+	/* Search Section Styles */
+	#search-section {
+	    background-color: #f4f4f4;
+	    padding: 60px 0;
+	    text-align: center;
+	}
+	
+	#search-section h1 {
+	    margin-bottom: 30px;
+	    font-size: 2.5em;
+	    color: #003580;
+	    font-weight: bold;
+	}
+	
+	#search-form input, #search-form button {
+	    padding: 15px;
+	    margin: 10px;
+	    border: none;
+	    border-radius: 8px;
+	    font-size: 1em;
+	}
+	
+	#search-form input {
+	    width: 20%;
+	    max-width: 300px;
+	    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	}
+	
+	#search-form button {
+	    background-color: #f57c00;
+	    color: #fff;
+	    cursor: pointer;
+	    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	    transition: background-color 0.3s ease-in-out, box-shadow 0.3s;
+	}
+	
+	#search-form button:hover {
+	    background-color: #e65100;
+	    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+	}
 
 /* Responsive Design */
-@media (max-width: 768px) {
-    .nav-links {
-        flex-direction: column;
-        gap: 10px;
-        margin-left: 0;
-    }
+	@media (max-width: 768px) {
+	    .nav-links {
+	        flex-direction: column;
+	        gap: 10px;
+	        margin-left: 0;
+	    }
+	    
+	    #search-form input {
+	        width: 60%; /* Adapt search input to smaller screens */
+	    }
+	    
+	    #search-section h1 {
+	        font-size: 1.8em;
+	    }
     
-    #search-form input {
-        width: 60%; /* Adapt search input to smaller screens */
-    }
-    
-    #search-section h1 {
-        font-size: 1.8em;
-    }
-    
-}
+	}
     
     </style>
 </head>
