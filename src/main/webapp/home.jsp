@@ -7,6 +7,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotel Booking System</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    
     <style>
     /* Basic Reset */
 	* {
@@ -197,8 +202,8 @@
 					  </div>
 					</div>
             	<% } else { %>
-		            <div class="item2">Register</div>
-		            <div class="item2">Login</div>
+		            <div class="item2" data-toggle="modal" data-target="#registerModal">Register</div>
+		            <div class="item2" data-toggle="modal" data-target="#loginModal">Login</div>
 	            <% } %>
             </div>
             
@@ -217,6 +222,133 @@
             </form>
         </div>
     </section>
+    
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Login form -->
+                    <form>
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Password">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Register</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Register form -->
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Password">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <style>
+		.modal-backdrop {
+		    background-color: #5E5D5DB0;
+		}
+	
+		.modal-dialog {
+		    max-width: 400px;
+		    margin: 1.75rem auto;
+		}
+	
+		.modal-content {
+		    border-radius: 8px;
+		    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+		}
+	
+		.modal-header {
+		    background-color: #0056b3; 
+		    color: white;
+		    border-bottom: none;
+		    padding: 15px 20px;
+		    border-top-left-radius: 8px;
+		    border-top-right-radius: 8px;
+		}
+	
+		.modal-title {
+		    font-size: 24px;
+		    font-weight: bold;
+		}
+		
+		.modal-header .close {
+		    color: white;
+		    opacity: 0.8;
+		}
+		
+		.modal-header .close:hover {
+		    opacity: 1;
+		}
+		
+		.modal-body {
+		    padding: 20px;
+		    background-color: #f8f9fa; 
+		}
+		
+		.modal-body .form-group label {
+		    font-weight: bold;
+		    color: #333;
+		}
+		
+		.modal-body .form-control {
+		    border-radius: 5px;
+		    border: 1px solid #ced4da;
+		}
+		
+		.modal-body .btn-primary {
+		    background-color: #ff6600;
+		    border: none;
+		    width: 100%;
+		    padding: 10px;
+		    font-size: 16px;
+		    font-weight: bold;
+		    border-radius: 5px;
+		}
+		
+		.modal-body .btn-primary:hover {
+		    background-color: #cc5200; 
+		}
+    
+    </style>
 
     <!-- Hotel Listings Section -->
     <section id="hotel-listings">
