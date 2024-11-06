@@ -195,10 +195,10 @@
             	<% if (User != null) { %>
             		<div class="badge">
 					  <div class="circle">
-					    <span class="initial">P</span>
+					    <span class="initial"><%= userName.charAt(0) %></span>
 					  </div>
 					  <div class="text">
-					    <div class="name">{%= userName %}</div>
+					    <div class="name"><%= userName %></div>
 					  </div>
 					</div>
             	<% } else { %>
@@ -234,7 +234,7 @@
                 </div>
                 <div class="modal-body">
                     <!-- Login form -->
-                    <form>
+                    <form onsubmit="event.preventDefault(); submitForm2();">
                         <div class="form-group">
                             <label for="email">Email address</label>
                             <input type="email" class="form-control" id="email" placeholder="Enter email">
@@ -261,18 +261,18 @@
                 </div>
                 <div class="modal-body">
                     <!-- Register form -->
-                    <form>
+                    <form id="registerForm" onsubmit="event.preventDefault(); submitForm();">
                         <div class="form-group">
                             <label for="name">Full Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Enter name">
+                            <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
                         </div>
                         <div class="form-group">
                             <label for="email">Email address</label>
-                            <input type="email" class="form-control" id="email" placeholder="Enter email">
+                            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password">
+                            <input type="password" class="form-control" id="password" placeholder="Password" name="password">
                         </div>
                         <button type="submit" class="btn btn-primary">Register</button>
                     </form>
@@ -280,6 +280,43 @@
             </div>
         </div>
     </div>
+    
+    <script>
+    
+    function submitForm2(){
+    	window.location.href='';
+    	console.log("clicked");
+    }
+    
+    function submitForm() {
+    	var form = document.getElementById("registerForm");
+        var formData = new URLSearchParams(new FormData(form)).toString();
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "registerUser", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        
+        xhr.responseType = 'json';
+
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+            	obj=xhr.response;
+            	if(obj.code>0){
+            		alert("User Rigistered Successfully.");
+            		window.location.href='';
+            	}else if(obj.code==0){
+            		alert("Already have account.\nPlease Try to login.");
+            	}else if(obj.code==-1){
+            		alert("Internal server error.");
+            	}
+            }else{
+            	
+            }
+        };
+
+        xhr.send(formData);
+    }
+    </script>
     
     <style>
 		.modal-backdrop {
@@ -360,6 +397,6 @@
         </div>
     </section>
 
-    <script src="script.js"></script>
+    
 </body>
 </html>
