@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import com.google.gson.JsonObject;
 
@@ -20,9 +21,10 @@ public class LoginUser extends HttpServlet{
 	private String name;
 	private int id;
 	
-	protected void goPost(HttpServletRequest request,HttpServletResponse response) throws IOException {
+	protected void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException {
 		String email=(String) request.getParameter("email");
 		String password=(String) request.getParameter("password");
+		System.out.println(email+"  Tree");
 		
 		response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
@@ -45,7 +47,8 @@ public class LoginUser extends HttpServlet{
 	}
 	
 	private int checkUser(String email, String password) {
-	    String query = "SELECT id, password,name FROM user WHERE email = ?";
+		System.out.println("tree");
+	    String query = "SELECT * FROM user WHERE email = ?";
 	    try (Connection conn = Connect.setConnection();
 	         PreparedStatement pst = conn.prepareStatement(query)) {
 
@@ -56,8 +59,10 @@ public class LoginUser extends HttpServlet{
 	                if (rs.getString("password").equals(password)) {
 	                	id=rs.getInt("id");
 	                	name=rs.getString("name");
+	                	System.out.println("CAme in");
 	                    return 2;
 	                } else {
+	                	System.out.println("CAme tree");
 	                    return 1;
 	                }
 	            } else {

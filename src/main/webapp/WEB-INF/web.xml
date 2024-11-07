@@ -29,5 +29,23 @@
     <url-pattern>/registerUser</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>loginServlet</servlet-name>
+    <servlet-class>Controller.LoginUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>loginServlet</servlet-name>
+    <url-pattern>/loginUser</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>logOutServlet</servlet-name>
+    <servlet-class>Controller.LogOut</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>logOutServlet</servlet-name>
+    <url-pattern>/logOut</url-pattern>
+  </servlet-mapping>
+  
   
 </web-app>
