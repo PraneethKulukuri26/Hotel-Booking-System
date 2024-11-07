@@ -33,6 +33,7 @@
 	    top: 0;
 	    height:300px;
 	    background-image: url('https://www.pngall.com/wp-content/uploads/8/Travel-PNG-Images.png');
+	    /*background-image: url('E:/projects/java/Servlet/HotelBookingSystem/src/main/webapp/images/background.png');*/
 	}
 	
 	.navbar {
@@ -233,7 +234,7 @@
 					<div id="user-menu" class="dropdown-content">
 				      <a href="#">Manage Account</a>
 				      <a href="#">Booking History</a>
-				      <a href="#">Logout</a>
+				      <a href="/HotelBookingSystem/logOut">Logout</a>
 				    </div>
             	</div>
             	<% } else { %>
@@ -272,11 +273,11 @@
                     <form id="registerForm" onsubmit="event.preventDefault(); submitForm2();">
                         <div class="form-group">
                             <label for="email">Email address</label>
-                            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                            <input type="email" class="form-control" id="LoginEmail" placeholder="Enter email" name="email">
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                            <input type="password" class="form-control" id="LoginPassword" placeholder="Password" name="password">
                         </div>
                         <button type="submit" class="btn btn-primary">Login</button>
                     </form>
@@ -337,11 +338,18 @@
 	    function submitForm2(){
 	    	//window.location.href='';
 	    	//console.log("clicked");
-	    	var form = document.getElementById("registerForm");
-	        var formData = new URLSearchParams(new FormData(form)).toString();
+	    	/*var form = document.getElementById("registerForm");
+	        var formData = new URLSearchParams(new FormData(form)).toString();*/
+	        const email = document.getElementById("LoginEmail").value;
+	        const password = document.getElementById("LoginPassword").value;
+	        console.log(email);
+	        console.log(password);
+	        
+	        formData="email="+email+"&password="+password;
+	        
 	        
 	        var xhr = new XMLHttpRequest();
-	        xhr.open("POST", "registerUser", true);
+	        xhr.open("POST", "loginUser", true);
 	        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	        
 	        xhr.responseType = 'json';
@@ -353,11 +361,11 @@
 	            		alert("Login successfull.");
 	            		window.location.href='';
 	            	}else if(obj.code==1){
-	            		alert("Already have account.\nPlease Try to login.");
+	            		alert("Incorrect Password.");
 	            	}else if(obj.code==0){
-	            		alert("Internal server error.");
+	            		alert("User not found.");
 	            	}else{
-	            		
+	            		alert("Internal Server Error.");
 	            	}
 	            }else{
 	            	
