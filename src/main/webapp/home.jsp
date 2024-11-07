@@ -118,6 +118,33 @@
 	.badge:hover{
 		background-color:#EEEEEF30;
 	}
+	
+	
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #f1f1f1;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  width: 200px;
+  border-radius: 5px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
+}
 
 	/* Search Section Styles */
 	#search-section {
@@ -193,14 +220,22 @@
 		        <div class="item1">List your property</div>
             
             	<% if (User != null) { %>
-            		<div class="badge">
+            	<div>
+            		<div class="badge" id="user-btnAppend">
 					  <div class="circle">
-					    <span class="initial">P</span>
+					    <span class="initial"><%= userName.charAt(0) %></span>
 					  </div>
 					  <div class="text">
-					    <div class="name">{%= userName %}</div>
+					    <div class="name"><%= userName %></div>
 					  </div>
 					</div>
+					
+					<div id="user-menu" class="dropdown-content">
+				      <a href="#">Manage Account</a>
+				      <a href="#">Booking History</a>
+				      <a href="#">Logout</a>
+				    </div>
+            	</div>
             	<% } else { %>
 		            <div class="item2" data-toggle="modal" data-target="#registerModal">Register</div>
 		            <div class="item2" data-toggle="modal" data-target="#loginModal">Login</div>
@@ -234,14 +269,14 @@
                 </div>
                 <div class="modal-body">
                     <!-- Login form -->
-                    <form>
+                    <form id="registerForm" onsubmit="event.preventDefault(); submitForm2();">
                         <div class="form-group">
                             <label for="email">Email address</label>
-                            <input type="email" class="form-control" id="email" placeholder="Enter email">
+                            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password">
+                            <input type="password" class="form-control" id="password" placeholder="Password" name="password">
                         </div>
                         <button type="submit" class="btn btn-primary">Login</button>
                     </form>
@@ -261,18 +296,18 @@
                 </div>
                 <div class="modal-body">
                     <!-- Register form -->
-                    <form>
+                    <form id="registerForm" onsubmit="event.preventDefault(); submitForm();">
                         <div class="form-group">
                             <label for="name">Full Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Enter name">
+                            <input type="text" class="form-control" id="Registername" placeholder="Enter name" name="nameR">
                         </div>
                         <div class="form-group">
                             <label for="email">Email address</label>
-                            <input type="email" class="form-control" id="email" placeholder="Enter email">
+                            <input type="email" class="form-control" id="Registeremail" placeholder="Enter email" name="emailR">
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password">
+                            <input type="password" class="form-control" id="Registerpassword" placeholder="Password" name="passwordR">
                         </div>
                         <button type="submit" class="btn btn-primary">Register</button>
                     </form>
@@ -280,6 +315,92 @@
             </div>
         </div>
     </div>
+    
+    <script>
+    
+    	document.getElementById("user-btnAppend").addEventListener("click", function() {
+    	  document.getElementById("user-menu").classList.toggle("show");
+    	});
+
+    	window.onclick = function(event) {
+    	  if (!event.target.matches('#user-btnAppend')) {
+    	    var dropdowns = document.getElementsByClassName("dropdown-content");
+    	    for (var i = 0; i < dropdowns.length; i++) {
+    	      var openDropdown = dropdowns[i];
+    	      if (openDropdown.classList.contains('show')) {
+    	        openDropdown.classList.remove('show');
+    	      }
+    	    }
+    	  }
+    	}
+    
+	    function submitForm2(){
+	    	//window.location.href='';
+	    	//console.log("clicked");
+	    	var form = document.getElementById("registerForm");
+	        var formData = new URLSearchParams(new FormData(form)).toString();
+	        
+	        var xhr = new XMLHttpRequest();
+	        xhr.open("POST", "registerUser", true);
+	        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	        
+	        xhr.responseType = 'json';
+	        
+	        xhr.onload=function(){
+	        	if (xhr.status === 200) {
+	            	obj=xhr.response;
+	            	if(obj.code==2){
+	            		alert("Login successfull.");
+	            		window.location.href='';
+	            	}else if(obj.code==1){
+	            		alert("Already have account.\nPlease Try to login.");
+	            	}else if(obj.code==0){
+	            		alert("Internal server error.");
+	            	}else{
+	            		
+	            	}
+	            }else{
+	            	
+	            }
+	        };
+	        
+	        xhr.send(formData);
+	    }
+    
+    function submitForm() {
+        const email = document.getElementById("Registeremail").value;
+        const password = document.getElementById("Registerpassword").value;
+        const name=document.getElementById("Registername").value;
+        console.log(email);
+        console.log(password);
+        
+        formData="email="+email+"&password="+password+"&name="+name;
+        //console.log(formData);
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "registerUser", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        
+        xhr.responseType = 'json';
+
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+            	obj=xhr.response;
+            	if(obj.code>0){
+            		alert("User Rigistered Successfully.");
+            		window.location.href='';
+            	}else if(obj.code==0){
+            		alert("Already have account.\nPlease Try to login.");
+            	}else if(obj.code==-1){
+            		alert("Internal server error.");
+            	}
+            }else{
+            	
+            }
+        };
+
+        xhr.send(formData);
+    }
+    </script>
     
     <style>
 		.modal-backdrop {
@@ -360,6 +481,6 @@
         </div>
     </section>
 
-    <script src="script.js"></script>
+    
 </body>
 </html>
