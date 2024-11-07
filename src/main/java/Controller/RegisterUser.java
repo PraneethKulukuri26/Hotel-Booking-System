@@ -20,6 +20,7 @@ public class RegisterUser extends HttpServlet{
 		String email=(String) request.getParameter("email");
 		String name=(String) request.getParameter("name");
 		String password=(String) request.getParameter("password");
+		System.out.println(email);
 		
 		response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
@@ -38,28 +39,7 @@ public class RegisterUser extends HttpServlet{
       
         PrintWriter out=response.getWriter();
         out.print(json.toString());
-        out.flush();
-//      PrintWriter out=response.getWriter();
-//      out.print("tree");
-//        System.out.println("came in");
-//        response.sendRedirect("/");
-        
-//        if(result>=1) {
-//        	HttpSession session=request.getSession();
-//        	session.setAttribute("UserId", String.valueOf(result));
-//        	session.setAttribute("UserName", name);
-//        	
-//        	response.sendRedirect("/HotelBookingSystem");
-//        }else {
-//        	JsonObject json=new JsonObject();
-//            json.addProperty("code", result);
-//            
-//            PrintWriter out=response.getWriter();
-//            out.print(json.toString());
-//            out.flush();
-//        }
-//		
-		
+        out.flush();	
 	}
 	
 	private int userInsertTed(String email, String name, String password) {
