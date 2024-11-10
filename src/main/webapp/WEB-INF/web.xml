@@ -47,5 +47,53 @@
     <url-pattern>/logOut</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>TestServlet</servlet-name>
+    <servlet-class>Controller.testControlle</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TestServlet</servlet-name>
+    <url-pattern>/test</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>adminHome</servlet-name>
+    <servlet-class>Controller.PostProperty.AdminHome</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>adminHome</servlet-name>
+    <url-pattern>/admin/home</url-pattern>
+  </servlet-mapping>
+  
+  
+   <servlet>
+    <servlet-name>RenderadminRegister</servlet-name>
+    <servlet-class>Controller.PostProperty.RenderAdminRegisterPage</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RenderadminRegister</servlet-name>
+    <url-pattern>/admin/RenderPageLogin</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>adminRegister</servlet-name>
+    <servlet-class>Controller.PostProperty.AdminRegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>adminRegister</servlet-name>
+    <url-pattern>/admin/Register</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>adminLogin</servlet-name>
+    <servlet-class>Controller.PostProperty.AdminLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>adminLogin</servlet-name>
+    <url-pattern>/admin/Login</url-pattern>
+  </servlet-mapping>
+  
   
 </web-app>

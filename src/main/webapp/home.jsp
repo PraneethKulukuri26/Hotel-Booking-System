@@ -21,7 +21,7 @@
 	}
 	
 	body {
-	    font-family: 'Poppins', sans-serif;  /* A modern font, you can include it via Google Fonts */
+	    font-family: 'Poppins', sans-serif;
 	    color: #333;
 	    background-color: #f4f4f4;
 	}
@@ -64,6 +64,17 @@
 	.item1:hover{
 	text-decoration:underline;
 	}
+	
+	.item1 a{
+		color:#fff;
+	    font-size: 1.05em;
+	    cursor:pointer;
+	    text-decoration:none;
+	}
+	
+	.item1 a:hover{
+	text-decoration:underline;
+	}
 
 	.item2{
 		background-color:#fff;
@@ -79,7 +90,7 @@
 	.badge {
 	  display: flex;
 	  align-items: center;
-	  background-color: #003087; /* Deep blue background */
+	  background-color: #003087; 
 	  padding: 10px;
 	  border-radius: 10px;
 	  width: fit-content;
@@ -89,7 +100,7 @@
 	}
 
 	.circle {
-	  background-color: #FFC700; /* Yellow circle */
+	  background-color: #FFC700; 
 	  width: 40px;
 	  height: 40px;
 	  border-radius: 50%;
@@ -102,7 +113,7 @@
 	.initial {
 	  font-weight: bold;
 	  font-size: 20px;
-	  color: black; /* Black text for initial */
+	  color: black; 
 	}
 
 	.text .name {
@@ -113,41 +124,39 @@
 	.text .level {
 	  font-size: 14px;
 	  font-weight: normal;
-	  color: #FFC700; /* Yellow text for level */
+	  color: #FFC700; 
 	}
 	
 	.badge:hover{
 		background-color:#EEEEEF30;
 	}
 	
+	.dropdown-content {
+	  display: none;
+	  position: absolute;
+	  right: 0;
+	  background-color: #f1f1f1;
+	  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	  z-index: 1;
+	  width: 200px;
+	  border-radius: 5px;
+	}
 	
-.dropdown-content {
-  display: none;
-  position: absolute;
-  right: 0;
-  background-color: #f1f1f1;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-  width: 200px;
-  border-radius: 5px;
-}
+	.dropdown-content a {
+	  color: black;
+	  padding: 12px 16px;
+	  text-decoration: none;
+	  display: block;
+	}
+	
+	.dropdown-content a:hover {
+	  background-color: #ddd;
+	}
+	
+	.show {
+	  display: block;
+	}
 
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-.show {
-  display: block;
-}
-
-	/* Search Section Styles */
 	#search-section {
 	    background-color: #f4f4f4;
 	    padding: 60px 0;
@@ -216,9 +225,9 @@
 
     <header>
         <nav class="navbar">
-            <h1 class="logo"><a href="#">HotelBooking</a></h1>
+            <h1 class="logo"><a href="/">HotelBooking</a></h1>
             <div class="containerItem" >
-		        <div class="item1">List your property</div>
+		        <div class="item1"><a href="/HotelBookingSystem/admin/home">List your property</a></div>
             
             	<% if (User != null) { %>
             	<div>
@@ -350,7 +359,7 @@
 	        
 	        var xhr = new XMLHttpRequest();
 	        xhr.open("POST", "loginUser", true);
-	        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	        
 	        xhr.responseType = 'json';
 	        
