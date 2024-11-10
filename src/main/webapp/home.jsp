@@ -64,6 +64,17 @@
 	.item1:hover{
 	text-decoration:underline;
 	}
+	
+	.item1 a{
+		color:#fff;
+	    font-size: 1.05em;
+	    cursor:pointer;
+	    text-decoration:none;
+	}
+	
+	.item1 a:hover{
+	text-decoration:underline;
+	}
 
 	.item2{
 		background-color:#fff;
@@ -214,9 +225,9 @@
 
     <header>
         <nav class="navbar">
-            <h1 class="logo"><a href="#">HotelBooking</a></h1>
+            <h1 class="logo"><a href="/">HotelBooking</a></h1>
             <div class="containerItem" >
-		        <div class="item1">List your property</div>
+		        <div class="item1"><a href="/HotelBookingSystem/admin/home">List your property</a></div>
             
             	<% if (User != null) { %>
             	<div>
@@ -348,7 +359,7 @@
 	        
 	        var xhr = new XMLHttpRequest();
 	        xhr.open("POST", "loginUser", true);
-		        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	        
 	        xhr.responseType = 'json';
 	        

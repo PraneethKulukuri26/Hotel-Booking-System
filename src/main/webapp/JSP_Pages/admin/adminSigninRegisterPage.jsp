@@ -130,15 +130,15 @@
             <h3 class="mt-4" style="font-size:22px;font-weight: bold;">Sign in to manage your property</h3>
 
             <!-- Username input -->
-            <form>
+            <div >
                 <div class="form-group mt-4">
                     <label for="Login-password" class="form-label">Password</label>
                     <input type="password" id="Login-password" class="form-control" placeholder="Enter Password">
                 </div>
 
                 <!-- Next button -->
-                <button type="submit" class="btn btn-primary btn-block w-100">Login</button>
-            </form>
+                <button id="loginUserAdminBtn" type="submit" class="btn btn-primary btn-block w-100">Login</button>
+            </div>
 
             <!-- Help link -->
             <a href="#" class="d-block mt-4">Having trouble signing in?</a>
@@ -179,7 +179,7 @@
             <h3 class="mt-4" style="font-size:22px;font-weight: bold;">Register your partner account</h3>
 
             <!-- Password input fields -->
-            <form>
+            <div>
                 <div class="form-group mt-4">
                     <label for="register-password" class="form-label">Password</label>
                     <input type="password" id="register-password" class="form-control" placeholder="Enter Password">
@@ -191,8 +191,8 @@
                 </div>
 
                 <!-- Register button -->
-                <button type="submit" class="btn btn-primary btn-block w-100">Register</button>
-            </form>
+                <button id="RegisterButtonUser" type="submit" class="btn btn-primary btn-block w-100">Register</button>
+            </div>
 
             <!-- Horizontal divider -->
             <hr>
@@ -225,6 +225,90 @@
     
     
     $(document).ready(function () {
+    	
+    	$('#loginUserAdminBtn').click(function () {
+			var pass=$('#Login-password').val().trim();
+			
+			if(pass==""){
+    			alert("Password field cannot be empty.");
+			}else{
+				var email=$('#loginDevInput').val();
+				
+				formData="email="+email+"&password="+pass;
+				
+				var xhr = new XMLHttpRequest();
+    	        xhr.open("POST", "/HotelBookingSystem/admin/Login", true);
+    	        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    	        
+    	        xhr.onload=function(){
+    	        	if(xhr.status===200){
+    	        		obj=JSON.parse(xhr.response);
+    	        		if(obj.code==2){
+    	        			alert("Login Successfully.");
+    	            		window.location.href='/admin/home';
+    	        		}else if(obj.code==1){
+    	            		alert("Incorrect Password.");
+    	            	}else if(obj.code==0){
+    	            		alert("User not found.");
+    	            	}else{
+    	            		alert("Internal Server Error.");
+    	            	}
+    	        	}
+    	        };
+    	        
+    	        xhr.send(formData);
+			}
+		});
+    	
+    	
+    	$('#RegisterButtonUser').click(function(){
+    		console.log("Treeweeww");
+    		var pass=$('#register-password').val().trim();
+    		var cPass=$('#confirm-password').val().trim();
+    		console.log(pass);
+    		console.log(cPass);
+    		
+    		if(pass==="" || cPass===""){
+    			alert("Password field cannot be empty.");
+    		}else if(pass!==cPass){
+    			alert("Password did not match.");
+    		}
+    		else{
+    			var email=$('#register-username').val().trim();
+    			
+    			var formData = "email=" + encodeURIComponent(email) + "&password=" + encodeURIComponent(pass) + "&confirmPassword=" + encodeURIComponent(cPass);
+
+    			var xhr = new XMLHttpRequest();
+    	        xhr.open("POST", "/HotelBookingSystem/admin/Register", true);
+    	        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    	        
+    	        xhr.onload = function() {
+    	            if (xhr.status === 200) {
+    	            	obj=JSON.parse(xhr.response);
+    	            	//obj={};
+    	            	//obj.code=-1;
+    	            	if(obj.code==-2){
+    	            		alert("Password did not match.");
+    	            	}else if(obj.code>1){
+    	            		alert("Rigistered Successfully.");
+    	            		window.location.href='/HotelBookingSystem/admin/home';
+    	            	}else if(obj.code==0){
+    	            		alert("Already have account.\nPlease Try to login.");
+    	            	}else if(obj.code==-1){
+    	            		alert("Internal server error.");
+    	            	}
+    	            }else{
+    	            	
+    	            }
+    	        };
+
+    	        xhr.send(formData);
+    			
+    		}
+    	});
+    	
+    	
+    	
         // Show RegisterDiv and hide loginDiv with animation
         $('#create-account-btn').click(function () {
             $('.loginDiv').slideUp(400, function () {
@@ -282,6 +366,7 @@
                 $('.loginDiv').slideDown(400);
             });
         });
+        
     });
 
 
