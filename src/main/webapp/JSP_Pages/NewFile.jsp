@@ -1,295 +1,140 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
 
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign in to Manage Your Property</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Home</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- jQuery CDN -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <style>
-        /* Styling for the container */
-        .login-container {
-            max-width: 400px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            text-align: center;
+        .dashboard-card {
+            transition: transform 0.2s;
         }
-
-        /* Blue top bar */
-        .top-bar {
-            background-color: #003580;
-            padding: 10px 40px 10px 20px;
-            text-align: left;
-            color: white;
-            font-weight: bold;
-            font-size: 20px;
+        .dashboard-card:hover {
+            transform: translateY(-5px);
         }
-
-        .top-bar a {
-            width: fit-content;
-            cursor: pointer;
-            text-decoration: none;
-            color: white;
-        }
-
-        /* Form elements */
-        .form-control {
-            height: 50px;
-            padding: 10px;
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        /* Align email label to left */
-        .form-label {
-            text-align: left;
-            display: block;
-            font-weight: bold;
-            margin-left: 5px;
-        }
-
-        /* Button styling */
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-            padding: 10px 0;
-            font-size: 18px;
-        }
-
-        .btn-outline-primary {
-            margin-top: 20px;
-        }
-
-        /* Footer text and links */
-        .footer-text {
-            font-size: 14px;
-            margin-top: 30px;
-        }
-
-        .footer-text a {
-            color: #007bff;
-        }
-
-        /* Additional spacing and padding */
-        .mt-4 {
-            margin-top: 1.5rem;
-        }
-
-        .mt-5 {
-            margin-top: 3rem;
+        .stat-card {
+            border-left: 4px solid #0d6efd;
         }
     </style>
 </head>
+<body class="bg-light">
+    <div class="container py-5">
+        <h1 class="mb-4 text-center">Admin Dashboard</h1>
+        
+        <!-- Statistics Row -->
+        <div class="row mb-4">
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-0 shadow stat-card h-100">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Properties</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">${totalProperties}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="bi bi-house-door fs-2 text-primary"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-<body>
-    <!-- Top bar -->
-    <div class="top-bar">
-        <a href="/HotelBookingSystem/">HotelBooking</a>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-0 shadow stat-card h-100">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Active Bookings</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">${activeBookings}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="bi bi-calendar-check fs-2 text-success"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-0 shadow stat-card h-100">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Revenue</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">₹${totalRevenue}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="bi bi-currency-rupee fs-2 text-info"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-0 shadow stat-card h-100">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Approvals</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">${pendingApprovals}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="bi bi-clock-history fs-2 text-warning"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Actions Row -->
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow dashboard-card">
+                    <div class="card-body text-center">
+                        <i class="bi bi-houses fs-1 text-primary mb-3"></i>
+                        <h5 class="card-title">Manage Properties</h5>
+                        <p class="card-text">View, edit, and manage all your listed properties</p>
+                        <a href="viewProperties.jsp" class="btn btn-primary mb-2 w-100">View Properties</a>
+                        <a href="addProperty.jsp" class="btn btn-outline-primary w-100">Add New Property</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow dashboard-card">
+                    <div class="card-body text-center">
+                        <i class="bi bi-calendar2-week fs-1 text-success mb-3"></i>
+                        <h5 class="card-title">Booking Management</h5>
+                        <p class="card-text">Monitor and manage all property bookings</p>
+                        <a href="viewBookings.jsp" class="btn btn-success mb-2 w-100">View All Bookings</a>
+                        <a href="pendingBookings.jsp" class="btn btn-outline-success w-100">Pending Bookings</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow dashboard-card">
+                    <div class="card-body text-center">
+                        <i class="bi bi-gear fs-1 text-info mb-3"></i>
+                        <h5 class="card-title">Settings & Reports</h5>
+                        <p class="card-text">Manage your account and view reports</p>
+                        <a href="reports.jsp" class="btn btn-info mb-2 w-100">View Reports</a>
+                        <a href="settings.jsp" class="btn btn-outline-info w-100">Settings</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Login form container -->
-    <div class="login-container">
-
-        <!-- LoginDiv -->
-        <div class="loginDiv">
-            <!-- Title -->
-            <h3 class="mt-4" style="font-size:22px;font-weight: bold;">Sign in to manage your property</h3>
-
-            <!-- Username input -->
-            <form>
-                <div class="form-group mt-4">
-                    <label for="username" class="form-label">Email</label>
-                    <input id="loginDevInput" type="text" id="username" class="form-control" placeholder="Enter your mail">
-                </div>
-
-                <!-- Next button -->
-                <button id="go-to-LoginPassword-btn" type="submit" class="btn btn-primary btn-block w-100">Next</button>
-            </form>
-
-            <!-- Help link -->
-            <a href="#" class="d-block mt-4">Having trouble signing in?</a>
-
-            <!-- Horizontal divider -->
-            <hr>
-
-            <!-- Create partner account button -->
-            <button type="button" class="btn btn-outline-primary w-100" id="create-account-btn">Create your partner account</button>
-        </div>
-        
-        <div class="loginDivPassword" style="display:none;">
-            <!-- Title -->
-            <h3 class="mt-4" style="font-size:22px;font-weight: bold;">Sign in to manage your property</h3>
-
-            <!-- Username input -->
-            <form>
-                <div class="form-group mt-4">
-                    <label for="Login-password" class="form-label">Password</label>
-                    <input type="password" id="Login-password" class="form-control" placeholder="Enter Password">
-                </div>
-
-                <!-- Next button -->
-                <button type="submit" class="btn btn-primary btn-block w-100">Login</button>
-            </form>
-
-            <!-- Help link -->
-            <a href="#" class="d-block mt-4">Having trouble signing in?</a>
-
-            <!-- Horizontal divider -->
-            <hr>
-
-            <!-- Create partner account button -->
-            <button type="button" class="btn btn-outline-primary w-100" id="create-account-btn">Back</button>
-        </div>
-
-        <!-- RigisterDiv -->
-        <div class="RigisterDiv" style="display:none;">
-            <!-- Title -->
-            <h3 class="mt-4" style="font-size:22px;font-weight: bold;">Register your partner account</h3>
-
-            <!-- Username input -->
-            <form>
-                <div class="form-group mt-4">
-                    <label for="register-username" class="form-label">Email</label>
-                    <input type="text" id="register-username" class="form-control" placeholder="Enter your email">
-                </div>
-
-                <!-- Register button -->
-                <button type="button" class="btn btn-primary btn-block w-100" id="go-to-password-btn">Next</button>
-            </form>
-
-            <!-- Horizontal divider -->
-            <hr>
-
-            <!-- Back to Login button -->
-            <button type="button" class="btn btn-outline-primary w-100" id="back-to-login-btn">Back to Login</button>
-        </div>
-        
-        <!-- RegisterPassword div -->
-        <div class="RegisterPassword" style="display:none;">
-            <!-- Title -->
-            <h3 class="mt-4" style="font-size:22px;font-weight: bold;">Register your partner account</h3>
-
-            <!-- Password input fields -->
-            <form>
-                <div class="form-group mt-4">
-                    <label for="register-password" class="form-label">Password</label>
-                    <input type="password" id="register-password" class="form-control" placeholder="Enter Password">
-                </div>
-                
-                <div class="form-group mt-4">
-                    <label for="confirm-password" class="form-label">Confirm password</label>
-                    <input type="password" id="confirm-password" class="form-control" placeholder="Enter Password again">
-                </div>
-
-                <!-- Register button -->
-                <button type="submit" class="btn btn-primary btn-block w-100">Register</button>
-            </form>
-
-            <!-- Horizontal divider -->
-            <hr>
-
-            <!-- Back to Register div button -->
-            <button type="button" class="btn btn-outline-primary w-100" id="back-to-register-btn">Back</button>
-        </div>
-
-        <hr>
-
-        <!-- Footer text -->
-        <p class="footer-text mt-4">
-            Do you have questions about your property or the extranet?
-            Visit <a href="#">Partner Help</a> or ask another question on the <a href="#">Partner Community</a>.
-        </p>
-
-        <!-- Terms and conditions -->
-        <p class="footer-text">
-            By signing in or creating an account, you agree with our <a href="#">Terms & conditions</a> and <a href="#">Privacy statement</a>.
-        </p>
-
-        <!-- Copyright -->
-        <p class="footer-text">
-            All rights reserved.<br>
-        </p>
-    </div>
-
-    <!-- jQuery script for toggling divs with animation -->
-    <script>
-    
-    
-    $(document).ready(function () {
-        // Show RegisterDiv and hide loginDiv with animation
-        $('#create-account-btn').click(function () {
-            $('.loginDiv').slideUp(400, function () {
-                $('.RigisterDiv').slideDown(400);
-            });
-        });
-
-        // Show loginDiv and hide RegisterDiv with animation
-        $('#back-to-login-btn').click(function () {
-            $('.RigisterDiv').slideUp(400, function () {
-                $('.loginDiv').slideDown(400);
-            });
-        });
-
-        // Validate email input before showing RegisterPassword
-        $('#go-to-password-btn').click(function () {
-            var email = $('#register-username').val().trim(); // Get the value of the email input
-
-            if (email === "") {
-                // Show an alert or any error message
-                alert("Email field cannot be empty.");
-            } else {
-                // Proceed if the input is not empty
-                $('.RigisterDiv').slideUp(400, function () {
-                    $('.RegisterPassword').slideDown(400);
-                });
-            }
-        });
-
-        // Show RegisterDiv and hide RegisterPassword with animation
-        $('#back-to-register-btn').click(function () {
-            $('.RegisterPassword').slideUp(400, function () {
-                $('.RigisterDiv').slideDown(400);
-            });
-        });
-
-        // Show loginDivPassword when submitting loginDiv
-        $('#go-to-LoginPassword-btn').click(function (e) {
-            e.preventDefault(); // Prevent form submission
-
-            var email = $('#loginDevInput').val().trim(); // Get the value of the email input
-            if (email === "") {
-                alert("Email field cannot be empty."); // Display error message
-            } else {
-                $('.loginDiv').slideUp(400, function () {
-                    $('.loginDivPassword').slideDown(400);
-                });
-            }
-        });
-
-        // Handle "Back" button in loginDivPassword to return to loginDiv
-        $('.loginDivPassword .btn-outline-primary').click(function (e) {
-            e.preventDefault(); // Prevent default button action
-            $('.loginDivPassword').slideUp(400, function () {
-                $('.loginDiv').slideDown(400);
-            });
-        });
-    });
-
-
-
-    </script>
-
-    <!-- Bootstrap JS Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

@@ -87,6 +87,114 @@
         .mt-5 {
             margin-top: 3rem;
         }
+        
+    .login-container {
+        max-width: 450px;
+        margin: 30px auto;
+        padding: 30px;
+        background-color: white;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        border-radius: 12px;
+        text-align: center;
+    }
+
+    /* Improved top bar */
+    .top-bar {
+        background: linear-gradient(135deg, #003580 0%, #004bb9 100%);
+        padding: 15px 40px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .top-bar a {
+        font-size: 24px;
+        transition: opacity 0.2s;
+    }
+
+    .top-bar a:hover {
+        opacity: 0.9;
+    }
+
+    /* Enhanced form elements */
+    .form-control {
+        height: 52px;
+        padding: 12px 16px;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+    }
+
+    /* Button improvements */
+    .btn {
+        height: 52px;
+        font-weight: 600;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+        border: none;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+    }
+
+    .btn-outline-primary {
+        border-width: 2px;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #f8f9fa;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 576px) {
+        .login-container {
+            margin: 15px;
+            padding: 20px;
+        }
+
+        .top-bar {
+            padding: 12px 20px;
+        }
+
+        .btn {
+            height: 48px;
+        }
+    }
+
+    /* Animation improvements */
+    .loginDiv, .loginDivPassword, .RigisterDiv, .RegisterPassword {
+        transition: all 0.4s ease-in-out;
+    }
+
+    /* Links styling */
+    a {
+        transition: color 0.2s;
+    }
+
+    a:hover {
+        color: #0056b3;
+        text-decoration: none;
+    }
+
+    /* Form validation visual feedback */
+    .form-control.is-invalid {
+        border-color: #dc3545;
+        background-image: url("data:image/svg+xml,...");
+    }
+
+    .form-control.is-valid {
+        border-color: #28a745;
+        background-image: url("data:image/svg+xml,...");
+    }
     </style>
 </head>
 
@@ -245,7 +353,7 @@
     	        		obj=JSON.parse(xhr.response);
     	        		if(obj.code==2){
     	        			alert("Login Successfully.");
-    	            		window.location.href='/admin/home';
+    	            		window.location.href='/HotelBookingSystem/admin/home';
     	        		}else if(obj.code==1){
     	            		alert("Incorrect Password.");
     	            	}else if(obj.code==0){

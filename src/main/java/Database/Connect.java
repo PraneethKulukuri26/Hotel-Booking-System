@@ -19,7 +19,7 @@ public class Connect {
 			System.out.println("Connected.");
 		}catch(Exception e) {
 			conn=null;
-			System.out.println(e.getMessage()+"tyewtywye");
+			System.out.println(e);
 		}
 		
 		return conn;
