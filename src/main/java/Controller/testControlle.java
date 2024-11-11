@@ -14,7 +14,7 @@ public class testControlle extends HttpServlet{
 	public void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 		System.out.println(request.getAttribute("tree"));
 		
-		RequestDispatcher dispatcher=request.getRequestDispatcher("/JSP_Pages/NewFile.jsp");
+		RequestDispatcher dispatcher=request.getRequestDispatcher("/JSP_Pages/admin/adminAddProperty.jsp");
 		dispatcher.forward(request, response);
 //		PrintWriter out=response.getWriter();
 //		out.print("Hello from servlet to Esp32");

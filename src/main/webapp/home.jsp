@@ -214,7 +214,218 @@
 	    }
     
 	}
+	
+	
+	
+	/* ... existing styles ... */
+
+/* Enhanced Header Styles */
+header {
+    background: linear-gradient(rgba(0, 53, 128, 0.9), rgba(0, 53, 128, 0.85)),
+                url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80');
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    padding: 15px 8%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(0, 53, 128, 0.95);
+}
+
+.logo a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.containerItem {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.item1 {
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.item1:hover {
+    background: rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+}
+
+.item2 {
+    background-color: #fff;
+    padding: 8px 20px;
+    color: #003580;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.item2:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+/* User Badge Styles */
+.badge {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 8px 15px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.badge:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.circle {
+    background-color: #FFC700;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.initial {
+    font-weight: 600;
+    font-size: 18px;
+    color: #003580;
+}
+
+.text .name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+}
+
+/* Dropdown Menu Styles */
+.dropdown-content {
+    position: absolute;
+    right: 8%;
+    top: 80px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    width: 220px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.dropdown-content.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 20px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #f5f5f5;
+    color: #003580;
+}
+
+/* Header Content Styles */
+.header-content {
+    max-width: 800px;
+    margin: 120px auto 0;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+}
+
+.header-content h1 {
+    font-size: 2.8em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header-content p {
+    font-size: 1.2em;
+    opacity: 0.9;
+    margin-bottom: 30px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 5%;
+    }
     
+    .header-content h1 {
+        font-size: 2em;
+    }
+    
+    .header-content p {
+        font-size: 1em;
+    }
+    
+    .containerItem {
+        gap: 10px;
+    }
+    
+    .item1, .item2 {
+        padding: 6px 12px;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        height: 400px;
+    }
+    
+    .navbar {
+        padding: 10px 15px;
+    }
+    
+    .logo a {
+        font-size: 1.2em;
+    }
+    
+    .dropdown-content {
+        right: 15px;
+        width: calc(100% - 30px);
+    }
+}
+    
+    // ... existing code ...
+
     </style>
 </head>
 <body>
@@ -223,37 +434,41 @@
 		String userName=(String) request.getAttribute("UserName");
 	%>
 
-    <header>
-        <nav class="navbar">
-            <h1 class="logo"><a href="/">HotelBooking</a></h1>
-            <div class="containerItem" >
-		        <div class="item1"><a href="/HotelBookingSystem/admin/home">List your property</a></div>
+   <header>
+    <nav class="navbar">
+        <h1 class="logo"><a href="/">HotelBooking</a></h1>
+        <div class="containerItem">
+            <div class="item1"><a href="/HotelBookingSystem/admin/home">List your property</a></div>
             
-            	<% if (User != null) { %>
-            	<div>
-            		<div class="badge" id="user-btnAppend">
-					  <div class="circle">
-					    <span class="initial"><%= userName.charAt(0) %></span>
-					  </div>
-					  <div class="text">
-					    <div class="name"><%= userName %></div>
-					  </div>
-					</div>
-					
-					<div id="user-menu" class="dropdown-content">
-				      <a href="#">Manage Account</a>
-				      <a href="#">Booking History</a>
-				      <a href="/HotelBookingSystem/logOut">Logout</a>
-				    </div>
-            	</div>
-            	<% } else { %>
-		            <div class="item2" data-toggle="modal" data-target="#registerModal">Register</div>
-		            <div class="item2" data-toggle="modal" data-target="#loginModal">Login</div>
-	            <% } %>
+            <% if (User != null) { %>
+            <div>
+                <div class="badge" id="user-btnAppend">
+                    <div class="circle">
+                        <span class="initial"><%= userName.charAt(0) %></span>
+                    </div>
+                    <div class="text">
+                        <div class="name"><%= userName %></div>
+                    </div>
+                </div>
+                
+                <div id="user-menu" class="dropdown-content">
+                    <a href="#"><i class="fas fa-user"></i> Manage Account</a>
+                    <a href="#"><i class="fas fa-history"></i> Booking History</a>
+                    <a href="/HotelBookingSystem/logOut"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
             </div>
-            
-        </nav>
-    </header>
+            <% } else { %>
+                <div class="item2" data-toggle="modal" data-target="#registerModal">Register</div>
+                <div class="item2" data-toggle="modal" data-target="#loginModal">Login</div>
+            <% } %>
+        </div>
+    </nav>
+    
+    <div class="header-content">
+        <h1>Find Your Perfect Stay</h1>
+        <p>Discover amazing places at exclusive deals</p>
+    </div>
+</header>
 
     <!-- Search Section -->
     <section id="search-section">
@@ -327,6 +542,19 @@
     </div>
     
     <script>
+    
+ // Add to your existing script section
+    document.addEventListener('DOMContentLoaded', function() {
+        const navbar = document.querySelector('.navbar');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    });
     
     	document.getElementById("user-btnAppend").addEventListener("click", function() {
     	  document.getElementById("user-menu").classList.toggle("show");

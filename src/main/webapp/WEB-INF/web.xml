@@ -96,4 +96,15 @@
   </servlet-mapping>
   
   
+  
+    <servlet>
+    <servlet-name>adminRenderAddProperty</servlet-name>
+    <servlet-class>Controller.PostProperty.RenderAdminAddProperty</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>adminRenderAddProperty</servlet-name>
+    <url-pattern>/admin/RenderAddProperty</url-pattern>
+  </servlet-mapping>
+  
+  
 </web-app>

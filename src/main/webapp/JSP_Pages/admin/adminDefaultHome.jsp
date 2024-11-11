@@ -10,81 +10,131 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
+        <style>
         /* Font from Google */
         body {
             font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
         }
 
-        /* Custom styles for the hero section */
+        /* Enhanced hero section */
         .hero-section {
-            background: linear-gradient(135deg, #003580 30%, #0078bf 100%); /* Gradient background */
-            padding: 100px 0;
-            height: 100vh; /* Full height */
+            background: linear-gradient(135deg, #003580 0%, #0078bf 100%);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            padding: 120px 0;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #fff;
             text-align: center;
+            position: relative;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80') center/cover;
+            opacity: 0.1;
         }
 
         .hero-section h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            font-weight: bold;
+            font-size: 4rem;
+            margin-bottom: 30px;
+            font-weight: 800;
             text-transform: capitalize;
+            letter-spacing: -1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
         .hero-section .highlight {
-            color: #00aaff; /* Light blue highlight */
+            color: #00aaff;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-section .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #00aaff;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-section .highlight:hover::after {
+            transform: scaleX(1);
         }
 
         .hero-section p {
-            font-size: 1.25rem;
-            margin-bottom: 30px;
-            max-width: 600px;
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.6;
+            opacity: 0.9;
         }
 
+        /* Enhanced button styles */
         .btn-primary {
             background-color: #00aaff;
-            border-color: #00aaff;
-            padding: 15px 30px;
+            border: none;
+            padding: 18px 40px;
             font-size: 1.2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            font-weight: 600;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0, 170, 255, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .btn-primary:hover {
             background-color: #0078bf;
-            border-color: #0078bf;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 170, 255, 0.4);
         }
 
-        /* Navbar */
+        /* Enhanced navbar */
         .navbar {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
         }
 
         .navbar-brand {
-            font-weight: bold;
-            font-size: 1.5rem;
+            font-weight: 800;
+            font-size: 1.8rem;
             color: #003580;
-        }
-
-        .navbar-brand:hover {
-            color: #0078bf;
+            letter-spacing: -1px;
         }
 
         .nav-link {
-            color: #003580;
-            font-weight: 500;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 10px 20px !important;
+            margin: 0 5px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
         }
 
         .nav-link:hover {
-            color: #0078bf;
+            color: #00aaff;
+            background: rgba(0, 170, 255, 0.1);
         }
     </style>
 </head>
