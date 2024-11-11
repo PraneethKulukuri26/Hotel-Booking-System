@@ -13,7 +13,6 @@ public class RenderAdminAddProperty extends HttpServlet{
 	protected void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
 		HttpSession session=request.getSession();
 		Object adminId=session.getAttribute("adminId");
-		System.out.println("tywetcuyqcqyvg,");
 		
 		if(adminId==null) {
 			response.sendRedirect("/HotelBookingSystem/admin/home");

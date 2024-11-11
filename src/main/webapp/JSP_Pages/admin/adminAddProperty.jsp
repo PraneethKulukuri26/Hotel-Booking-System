@@ -182,7 +182,7 @@
 
     <div class="container">
         <h2>Add New Property</h2>
-        <form action="processAddProperty" method="POST">
+        <form id="addPropertyForm" onsubmit="event.preventDefault(); submitForm();" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="hotelName">Hotel Name*</label>
                 <input type="text" id="hotelName" name="hotelName" required>
@@ -308,7 +308,44 @@
     </div>
 </body>
 
+
+
 <script>
+
+	function submitForm(){
+		var form = document.getElementById("addPropertyForm");
+		var formData = new FormData(form);
+		
+		console.log(formData);
+		
+		var xhr = new XMLHttpRequest();
+	        xhr.open("POST", "addProperty", true);
+		    //xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	        
+	        //xhr.responseType = 'json';
+	        
+	        xhr.onload=function(){
+	        	if (xhr.status === 200) {
+	        		console.log(xhr.response);
+	            	obj=JSON.parse(xhr.response);
+	            	
+	            	
+	            	if(obj.code==1){
+	            		alert("Hotel Added Successfully.");
+	            		window.location.href='/HotelBookingSystem/admin/home';
+	            	}else{
+	            		alert("Failed to add Hotel.");
+	            	}
+	        	}
+	        	else{
+	        		
+	        	}
+	        };
+	        
+	        xhr.send(formData);
+	}
+
+
     function handleImagePreview(inputId, previewId) {
         const input = document.getElementById(inputId);
         const preview = document.getElementById(previewId);
