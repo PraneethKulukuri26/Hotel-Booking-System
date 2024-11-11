@@ -97,13 +97,23 @@
   
   
   
-    <servlet>
+   <servlet>
     <servlet-name>adminRenderAddProperty</servlet-name>
     <servlet-class>Controller.PostProperty.RenderAdminAddProperty</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>adminRenderAddProperty</servlet-name>
     <url-pattern>/admin/RenderAddProperty</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>adminAddProperty</servlet-name>
+    <servlet-class>Controller.PostProperty.AdminAddProperty</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>adminAddProperty</servlet-name>
+    <url-pattern>/admin/addProperty</url-pattern>
   </servlet-mapping>
   
   
