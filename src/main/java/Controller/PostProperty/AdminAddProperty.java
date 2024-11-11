@@ -104,7 +104,6 @@ public class AdminAddProperty extends HttpServlet {
 	        } catch (SQLException e) {
 	        	System.out.println(e.getMessage());
 				json.addProperty("code",-1);
-	        	
                 response.getWriter().print(json.toString());
 			}
 		}

@@ -483,63 +483,63 @@ header {
         </div>
     </section>
     
-        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- Login form -->
-                    <form id="registerForm" onsubmit="event.preventDefault(); submitForm2();">
-                        <div class="form-group">
-                            <label for="email">Email address</label>
-                            <input type="email" class="form-control" id="LoginEmail" placeholder="Enter email" name="email">
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="LoginPassword" placeholder="Password" name="password">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Login</button>
-                    </form>
-                </div>
+   <!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Welcome Back</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm" onsubmit="event.preventDefault(); submitForm2();">
+                    <div class="form-group">
+                        <label for="LoginEmail">Email address</label>
+                        <input type="email" class="form-control" id="LoginEmail" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="LoginPassword">Password</label>
+                        <input type="password" class="form-control" id="LoginPassword" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
             </div>
         </div>
     </div>
-    
-    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="registerModalLabel">Register</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- Register form -->
-                    <form id="registerForm" onsubmit="event.preventDefault(); submitForm();">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" class="form-control" id="Registername" placeholder="Enter name" name="nameR">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email address</label>
-                            <input type="email" class="form-control" id="Registeremail" placeholder="Enter email" name="emailR">
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="Registerpassword" placeholder="Password" name="passwordR">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Register</button>
-                    </form>
-                </div>
+</div>
+
+<!-- Register Modal -->
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registerModalLabel">Create Account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm" onsubmit="event.preventDefault(); submitForm();">
+                    <div class="form-group">
+                        <label for="Registername">Full Name</label>
+                        <input type="text" class="form-control" id="Registername" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Registeremail">Email address</label>
+                        <input type="email" class="form-control" id="Registeremail" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Registerpassword">Password</label>
+                        <input type="password" class="form-control" id="Registerpassword" placeholder="Create a password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
             </div>
         </div>
     </div>
+</div>
     
     <script>
     
@@ -647,84 +647,556 @@ header {
     }
     </script>
     
-    <style>
-		.modal-backdrop {
-		    background-color: #5E5D5DB0;
-		}
-	
-		.modal-dialog {
-		    max-width: 400px;
-		    margin: 1.75rem auto;
-		}
-	
-		.modal-content {
-		    border-radius: 8px;
-		    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-		}
-	
-		.modal-header {
-		    background-color: #0056b3; 
-		    color: white;
-		    border-bottom: none;
-		    padding: 15px 20px;
-		    border-top-left-radius: 8px;
-		    border-top-right-radius: 8px;
-		}
-	
-		.modal-title {
-		    font-size: 24px;
-		    font-weight: bold;
-		}
-		
-		.modal-header .close {
-		    color: white;
-		    opacity: 0.8;
-		}
-		
-		.modal-header .close:hover {
-		    opacity: 1;
-		}
-		
-		.modal-body {
-		    padding: 20px;
-		    background-color: #f8f9fa; 
-		}
-		
-		.modal-body .form-group label {
-		    font-weight: bold;
-		    color: #333;
-		}
-		
-		.modal-body .form-control {
-		    border-radius: 5px;
-		    border: 1px solid #ced4da;
-		}
-		
-		.modal-body .btn-primary {
-		    background-color: #ff6600;
-		    border: none;
-		    width: 100%;
-		    padding: 10px;
-		    font-size: 16px;
-		    font-weight: bold;
-		    border-radius: 5px;
-		}
-		
-		.modal-body .btn-primary:hover {
-		    background-color: #cc5200; 
-		}
-    
-    </style>
+   <style>
+   /* Modal Styles */
+.modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+}
 
-    <!-- Hotel Listings Section -->
-    <section id="hotel-listings">
-        <div class="container">
-            <h2>Available Hotels</h2>
-            <div class="hotel-grid">
-                <!-- Hotel cards will be dynamically added here -->
+.modal-dialog {
+    max-width: 400px;
+    margin: 2rem auto;
+}
+
+.modal-content {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #003580, #0056b3);
+    color: white;
+    border-bottom: none;
+    padding: 1.5rem;
+    position: relative;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.modal-header .close {
+    color: white;
+    opacity: 0.8;
+    text-shadow: none;
+    transition: all 0.2s ease;
+    position: absolute;
+    right: 1.5rem;
+    padding: 0;
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.modal-header .close:hover {
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+.modal-body {
+    padding: 2rem;
+    background-color: #fff;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.form-control {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.form-control:focus {
+    border-color: #003580;
+    box-shadow: 0 0 0 0.2rem rgba(0, 53, 128, 0.15);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #003580, #0056b3);
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #0056b3, #003580);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 53, 128, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Form Validation Styles */
+.form-control.is-invalid {
+    border-color: #dc3545;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.invalid-feedback {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Additional Animation */
+.modal.fade .modal-dialog {
+    transform: scale(0.8);
+    transition: transform 0.3s ease-out;
+}
+
+.modal.show .modal-dialog {
+    transform: scale(1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .modal-dialog {
+        margin: 1rem;
+    }
+    
+    .modal-body {
+        padding: 1.5rem;
+    }
+    
+    .form-control {
+        font-size: 0.95rem;
+    }
+}
+   </style>
+   <!-- Hotel Listings Section -->
+<section id="hotel-listings" class="py-5">
+    <div class="container">
+        <h2 class="section-title">Popular Hotels</h2>
+        <p class="section-subtitle">Discover our most booked properties</p>
+        
+        <div class="row">
+            <!-- Hotel Card 1 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="hotel-card">
+                    <div class="hotel-card-image">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945" alt="Luxury Hotel">
+                        <div class="hotel-card-badge">Featured</div>
+                    </div>
+                    <div class="hotel-card-body">
+                        <div class="hotel-card-rating">
+                            <span class="badge">4.8</span>
+                            <div class="rating-text">
+                                <span>Excellent</span>
+                                <small>2,548 reviews</small>
+                            </div>
+                        </div>
+                        <h3 class="hotel-card-title">Grand Plaza Hotel</h3>
+                        <p class="hotel-card-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Central London, UK
+                        </p>
+                        <div class="hotel-card-amenities">
+                            <span><i class="fas fa-wifi"></i> Free WiFi</span>
+                            <span><i class="fas fa-parking"></i> Parking</span>
+                            <span><i class="fas fa-swimming-pool"></i> Pool</span>
+                        </div>
+                        <div class="hotel-card-footer">
+                            <div class="price">
+                                <small>From</small>
+                                <span>$199</span>
+                                <small>/night</small>
+                            </div>
+                            <button class="btn btn-primary">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hotel Card 2 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="hotel-card">
+                    <div class="hotel-card-image">
+                        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267" alt="Seaside Resort">
+                        <div class="hotel-card-badge">Popular</div>
+                    </div>
+                    <div class="hotel-card-body">
+                        <div class="hotel-card-rating">
+                            <span class="badge">4.6</span>
+                            <div class="rating-text">
+                                <span>Very Good</span>
+                                <small>1,873 reviews</small>
+                            </div>
+                        </div>
+                        <h3 class="hotel-card-title">Seaside Resort & Spa</h3>
+                        <p class="hotel-card-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Miami Beach, USA
+                        </p>
+                        <div class="hotel-card-amenities">
+                            <span><i class="fas fa-wifi"></i> Free WiFi</span>
+                            <span><i class="fas fa-spa"></i> Spa</span>
+                            <span><i class="fas fa-utensils"></i> Restaurant</span>
+                        </div>
+                        <div class="hotel-card-footer">
+                            <div class="price">
+                                <small>From</small>
+                                <span>$299</span>
+                                <small>/night</small>
+                            </div>
+                            <button class="btn btn-primary">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hotel Card 3 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="hotel-card">
+                    <div class="hotel-card-image">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945" alt="Mountain Lodge">
+                        <div class="hotel-card-badge">New</div>
+                    </div>
+                    <div class="hotel-card-body">
+                        <div class="hotel-card-rating">
+                            <span class="badge">4.9</span>
+                            <div class="rating-text">
+                                <span>Outstanding</span>
+                                <small>956 reviews</small>
+                            </div>
+                        </div>
+                        <h3 class="hotel-card-title">Alpine Mountain Lodge</h3>
+                        <p class="hotel-card-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Swiss Alps, Switzerland
+                        </p>
+                        <div class="hotel-card-amenities">
+                            <span><i class="fas fa-wifi"></i> Free WiFi</span>
+                            <span><i class="fas fa-snowflake"></i> AC</span>
+                            <span><i class="fas fa-mountain"></i> View</span>
+                        </div>
+                        <div class="hotel-card-footer">
+                            <div class="price">
+                                <small>From</small>
+                                <span>$399</span>
+                                <small>/night</small>
+                            </div>
+                            <button class="btn btn-primary">View Details</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<style>
+
+/* Hotel Listings Styles */
+#hotel-listings {
+    background-color: #f8f9fa;
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    color: #003580;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #6c757d;
+    margin-bottom: 40px;
+}
+
+.hotel-card {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.hotel-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.hotel-card-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.hotel-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.hotel-card:hover .hotel-card-image img {
+    transform: scale(1.1);
+}
+
+.hotel-card-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0,53,128,0.9);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.hotel-card-body {
+    padding: 20px;
+}
+
+.hotel-card-rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.hotel-card-rating .badge {
+    background: #003580;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-right: 10px;
+}
+
+.rating-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.rating-text span {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.rating-text small {
+    color: #6c757d;
+}
+
+.hotel-card-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.hotel-card-location {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.hotel-card-location i {
+    color: #003580;
+    margin-right: 5px;
+}
+
+.hotel-card-amenities {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.hotel-card-amenities span {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.hotel-card-amenities i {
+    color: #003580;
+    margin-right: 5px;
+}
+
+.hotel-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.price {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.price span {
+    color: #003580;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.price small {
+    color: #6c757d;
+}
+
+.hotel-card .btn-primary {
+    background: #003580;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.hotel-card .btn-primary:hover {
+    background: #002855;
+    transform: translateY(-2px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .hotel-card-image {
+        height: 180px;
+    }
+    
+    .hotel-card-title {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hotel-card-amenities {
+        flex-wrap: wrap;
+    }
+    
+    .hotel-card-footer {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .price {
+        justify-content: center;
+    }
+}
+</style>
+
+    <!-- ... existing code ... -->
+
+<!-- Property Types Section -->
+<section id="property-types" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Browse by Property Type</h2>
+        <div class="row">
+            <div class="col-md-3 col-6 mb-4">
+                <div class="property-type-card">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945" alt="Hotels">
+                    <h3>Hotels</h3>
+                    <p>2,014 properties</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mb-4">
+                <div class="property-type-card">
+                    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267" alt="Apartments">
+                    <h3>Apartments</h3>
+                    <p>1,203 properties</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mb-4">
+                <div class="property-type-card">
+                    <img src="https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8" alt="Resorts">
+                    <h3>Resorts</h3>
+                    <p>532 properties</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mb-4">
+                <div class="property-type-card">
+                    <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739" alt="Villas">
+                    <h3>Villas</h3>
+                    <p>845 properties</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Property Types Section Styles */
+#property-types {
+    background-color: #fff;
+    padding: 60px 0;
+}
+
+#property-types h2 {
+    color: #003580;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+.property-type-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.property-type-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.property-type-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.property-type-card h3 {
+    font-size: 1.2em;
+    color: #333;
+    margin: 15px 15px 5px;
+    font-weight: 600;
+}
+
+.property-type-card p {
+    color: #666;
+    margin: 0 15px 15px;
+    font-size: 0.9em;
+}
+</style>
 
     
 </body>
