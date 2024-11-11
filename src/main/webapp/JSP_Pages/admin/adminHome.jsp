@@ -103,7 +103,7 @@
                         <h5 class="card-title">Manage Properties</h5>
                         <p class="card-text">View, edit, and manage all your listed properties</p>
                         <a href="viewProperties.jsp" class="btn btn-primary mb-2 w-100">View Properties</a>
-                        <a href="addProperty.jsp" class="btn btn-outline-primary w-100">Add New Property</a>
+                        <a href="/HotelBookingSystem/admin/RenderAddProperty" class="btn btn-outline-primary w-100">Add New Property</a>
                     </div>
                 </div>
             </div>
